@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 25% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 25% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 168 100% 52%;
+    --primary-foreground: 230 30% 8%;
+
+    --secondary: 280 90% 65%;
+    --secondary-foreground: 230 30% 8%;
+
+    --muted: 230 20% 14%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 320 95% 60%;
+    --accent-foreground: 230 30% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 25% 18%;
+    --input: 230 25% 16%;
+    --ring: 168 100% 52%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(168 100% 52%), hsl(280 90% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(320 95% 60%), hsl(280 90% 65%));
+    --gradient-hero: radial-gradient(ellipse at top, hsl(280 90% 25% / 0.4), transparent 60%),
+                     radial-gradient(ellipse at bottom, hsl(168 100% 30% / 0.25), transparent 60%);
+
+    --shadow-glow: 0 0 40px hsl(168 100% 52% / 0.35);
+    --shadow-glow-pink: 0 0 40px hsl(320 95% 60% / 0.35);
+    --shadow-card: 0 10px 40px -10px hsl(230 50% 2% / 0.8);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      linear-gradient(hsl(168 100% 52% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(168 100% 52% / 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  h1,h2,h3,h4 { @apply font-display tracking-tight; }
+  ::selection { background: hsl(var(--primary) / 0.4); }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  .bg-hero { background-image: var(--gradient-hero); }
+  .glow { box-shadow: var(--shadow-glow); }
+  .glow-pink { box-shadow: var(--shadow-glow-pink); }
+  .glass {
+    background: hsl(230 25% 10% / 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(168 100% 52% / 0.4); }
+  50% { box-shadow: 0 0 50px hsl(168 100% 52% / 0.7); }
+}
