@@ -70,13 +70,13 @@ export const projects = [
     tags: ["Unity", "VR", "C#", "Meta Quest", "IAP"],
   },
   {
-    title: "Line to the Killer",
-    platform: "Roblox",
+    title: "Gods Gang",
+    platform: "Unity • Mobile",
     studio: "Carina Softlabs Inc.",
-    link: "https://roblox.com/games/138556890590066/Line-to-the-Killer",
+    link: "https://play.google.com/store/apps/details?id=com.techymaugames.godsgang&hl=en_IN",
     description:
-      "Designed the main gameplay loop and overall game architecture, including core systems for progression, interactions, and session flow.",
-    tags: ["Roblox", "Lua", "Game Architecture"],
+      "Developed complete playable character systems including movement, animations, combat abilities, collectible items, and Scriptable Object-based level data. Built modular special ability systems and an ambient audio system with distance-based attenuation and interior-exterior audio blending.",
+    tags: ["Unity", "Mobile", "C#", "Play Store", "Gameplay"],
   },
   {
     title: "Shogun Heist",
