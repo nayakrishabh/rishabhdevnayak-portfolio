@@ -49,16 +49,16 @@ const Index = () => {
                   <span className="h-2 w-2 rounded-full bg-primary glow" />
                 </div>
                 <div className="space-y-3 font-mono text-sm">
-                  <p><span className="text-muted-foreground">engine:</span> <span className="text-primary">"Unity"</span></p>
+                  <p><span className="text-muted-foreground">engines:</span> <span className="text-primary">["Unity","Roblox","Unreal"]</span></p>
                   <p><span className="text-muted-foreground">stack:</span> <span className="text-secondary">["C#","C++","Lua"]</span></p>
-                  <p><span className="text-muted-foreground">platform:</span> <span className="text-accent">"Meta Quest"</span></p>
+                  <p><span className="text-muted-foreground">focus:</span> <span className="text-accent">"VR/AR/MR"</span></p>
                   <p><span className="text-muted-foreground">mode:</span> <span className="text-primary">"multiplayer"</span></p>
                   <p><span className="text-muted-foreground">status:</span> <span className="text-secondary">"shipping"</span></p>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-primary">3+</p><p className="text-[10px] text-muted-foreground">Years</p></div>
-                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-secondary">10+</p><p className="text-[10px] text-muted-foreground">Projects</p></div>
-                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-accent">VR</p><p className="text-[10px] text-muted-foreground">Ready</p></div>
+                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-primary">2+</p><p className="text-[10px] text-muted-foreground">Years Exp</p></div>
+                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-secondary">4+</p><p className="text-[10px] text-muted-foreground">Shipped</p></div>
+                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-accent">3</p><p className="text-[10px] text-muted-foreground">Engines</p></div>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@ const Index = () => {
         <div className="grid md:grid-cols-3 gap-5">
           {projects.map((p) => (
             <a key={p.title} href={p.link} target="_blank" rel="noreferrer"
-               className="group glass rounded-xl p-6 hover:border-primary/60 hover:shadow-glow transition-all">
+              className="group glass rounded-xl p-6 hover:border-primary/60 hover:shadow-glow transition-all">
               <p className="font-mono text-[11px] text-primary">{p.platform}</p>
               <h3 className="mt-2 text-xl font-bold group-hover:text-gradient">{p.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{p.description}</p>
