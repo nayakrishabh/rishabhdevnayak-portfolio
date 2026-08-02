@@ -18,7 +18,7 @@ export const experience = [
     company: "Carina Softlabs Inc.",
     role: "Junior Unity Developer",
     location: "Raipur / Indore, India",
-    period: "Jul 2025 – Present",
+    period: "Jul 2025 – July 2026",
     points: [
       "Develop VR, AR, and MR applications in Unity, focusing on interaction systems, scene flow, and platform-specific frame rate optimization targeting Meta Quest hardware.",
       "Implement multiplayer features: player synchronization, session flow, and real-time gameplay interactions using version control and Agile/Scrum workflows.",
