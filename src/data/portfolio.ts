@@ -87,6 +87,15 @@ export const projects = [
       "Engineered a dynamic character-swapping challenge feature; diagnosed and resolved runtime crashes by programmatically generating and applying Humanoid Descriptions to custom Roblox character models for stable session flow.",
     tags: ["Roblox", "Lua", "Multiplayer"],
   },
+  {
+    title: "Red Bamboo",
+    platform: "Roblox",
+    studio: "Carina Softlabs Inc.",
+    link: "https://www.roblox.com/games/100270088910600/Red-Bamboo",
+    description:
+      "Developed the game's initial loading flow and startup sequence. Implemented a custom inventory system with item management and UI integration. Refined tool interactions and created a custom spawning logic for in-game tools. Built a complete UI system covering all game screens and HUD elements. Designed and implemented enemy behavior logic and AI systems.",
+    tags: ["Roblox", "Lua", "Multiplayer"],
+  },
 ];
 
 export const skills = [
