@@ -2,29 +2,64 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { profile, projects, skills } from "@/data/portfolio";
-import { ArrowRight, Download, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Download, ImageIcon, Cpu, Monitor, Gamepad2, Smartphone, Headset,
+  Box, Blocks, Component, Hash, Code2, FileCode2, Boxes,
+  Film, Cog, Atom, Zap, Gauge, Database, MousePointer2, Users,
+  GitBranch, GitCompare, TrendingUp, Bug,
+  type LucideIcon,
+} from "lucide-react";
+
+const iconMap: Record<string, LucideIcon> = {
+  box: Box, blocks: Blocks, component: Component,
+  hash: Hash, code2: Code2, "file-code2": FileCode2, gamepad2: Gamepad2, boxes: Boxes,
+  smartphone: Smartphone, headset: Headset, users: Users, monitor: Monitor,
+  film: Film, cog: Cog, atom: Atom, zap: Zap,
+  gauge: Gauge, database: Database, "mouse-pointer2": MousePointer2,
+  "git-branch": GitBranch, "git-compare": GitCompare, "trending-up": TrendingUp, bug: Bug,
+};
+
+const stats = [
+  { value: "5+", label: "PROJECTS SHIPPED" },
+  { value: "3", label: "GAME ENGINES" },
+  { value: "4", label: "PLATFORMS" },
+];
 
 const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="container pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-32">
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
+      <section className="container pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          {/* Left — Text content */}
           <div className="lg:col-span-7">
-            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-primary mb-4 sm:mb-5 flex items-center gap-2">
-              <Sparkles className="h-3.5 w-3.5" /> {profile.title}
+            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-primary mb-5">
+              {profile.title} · {profile.location}
             </p>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05]">
-              Hi, I'm <span className="text-gradient">{profile.name.split(" ")[0]}</span>.
+              {profile.name.split(" ")[0]}{" "}
+              <span className="text-gradient">{profile.name.split(" ").slice(1).join(" ")}</span>
               <br />
-              I build <span className="text-gradient">playable</span> worlds.
+              <span className="text-muted-foreground">builds games.</span>{" "}
+              <span className="text-gradient">ships experiences.</span>
             </h1>
-            <p className="mt-5 sm:mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
               {profile.summary}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+
+            {/* Stats */}
+            <div className="mt-10 grid grid-cols-3 gap-4 max-w-lg">
+              {stats.map((s) => (
+                <div key={s.label} className="glass rounded-xl p-4 text-center">
+                  <p className="text-2xl sm:text-3xl font-bold text-gradient">{s.value}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-1 tracking-wider">{s.label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground hover:opacity-90 glow">
-                <Link to="/projects">View Projects <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/projects">View Shipped Titles <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href={profile.resumeUrl} download>
@@ -32,33 +67,72 @@ const Index = () => {
                 </a>
               </Button>
             </div>
-            <div className="mt-8 flex flex-wrap gap-5 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> {profile.location}</span>
-              <a href={`mailto:${profile.email}`} className="flex items-center gap-2 hover:text-primary">
-                <Mail className="h-4 w-4 text-primary" /> {profile.email}
-              </a>
-            </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="relative aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-primary opacity-30 blur-3xl animate-pulse-glow" />
-              <div className="relative h-full w-full rounded-3xl glass p-8 flex flex-col justify-between animate-float">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-primary">// loadout.json</span>
-                  <span className="h-2 w-2 rounded-full bg-primary glow" />
+          {/* Right — Professional Game Dev Identity Card */}
+          <div className="lg:col-span-5 hidden lg:block">
+            <div className="relative">
+              {/* Glow behind the card */}
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-primary opacity-20 blur-2xl" />
+
+              <div className="relative glass rounded-2xl p-8 space-y-6">
+                {/* Header */}
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+                    <Gamepad2 className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <p className="font-display font-bold text-lg">{profile.name}</p>
+                    <p className="text-xs text-primary font-mono">{profile.title}</p>
+                  </div>
                 </div>
-                <div className="space-y-3 font-mono text-sm">
-                  <p><span className="text-muted-foreground">engines:</span> <span className="text-primary">["Unity","Roblox","Unreal"]</span></p>
-                  <p><span className="text-muted-foreground">stack:</span> <span className="text-secondary">["C#","C++","Lua"]</span></p>
-                  <p><span className="text-muted-foreground">focus:</span> <span className="text-accent">"VR/AR/MR"</span></p>
-                  <p><span className="text-muted-foreground">mode:</span> <span className="text-primary">"multiplayer"</span></p>
-                  <p><span className="text-muted-foreground">status:</span> <span className="text-secondary">"shipping"</span></p>
+
+                <div className="h-px bg-border" />
+
+                {/* Engines */}
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">Game Engines</p>
+                  <div className="space-y-2.5">
+                    <SkillBar icon={Cpu} label="Unity" level={90} color="primary" />
+                    <SkillBar icon={Cpu} label="Roblox Studio" level={80} color="secondary" />
+                    <SkillBar icon={Cpu} label="Unreal Engine" level={55} color="accent" />
+                  </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-primary">2+</p><p className="text-[10px] text-muted-foreground">Years Exp</p></div>
-                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-secondary">4+</p><p className="text-[10px] text-muted-foreground">Shipped</p></div>
-                  <div className="rounded-lg bg-muted/50 py-3"><p className="text-xl font-bold text-accent">3</p><p className="text-[10px] text-muted-foreground">Engines</p></div>
+
+                <div className="h-px bg-border" />
+
+                {/* Languages */}
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">Languages</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["C#", "C++", "Lua"].map((lang) => (
+                      <span key={lang} className="text-xs px-3 py-1.5 rounded-lg bg-muted text-foreground/80 font-mono">
+                        {lang}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="h-px bg-border" />
+
+                {/* Platforms */}
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-3">Target Platforms</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <PlatformBadge icon={Monitor} label="PC" />
+                    <PlatformBadge icon={Smartphone} label="Mobile" />
+                    <PlatformBadge icon={Headset} label="VR / AR / MR" />
+                    <PlatformBadge icon={Gamepad2} label="Console" />
+                  </div>
+                </div>
+
+                {/* Status indicator */}
+                <div className="flex items-center gap-2 pt-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
+                  </span>
+                  <span className="text-xs text-muted-foreground font-mono">Open to opportunities</span>
                 </div>
               </div>
             </div>
@@ -77,9 +151,15 @@ const Index = () => {
             <div key={s.category} className="glass rounded-xl p-5 hover:border-primary/50 transition-colors">
               <p className="font-mono text-xs text-primary mb-3">{s.category}</p>
               <div className="flex flex-wrap gap-1.5">
-                {s.items.slice(0, 5).map((i) => (
-                  <span key={i} className="text-xs px-2 py-1 rounded bg-muted text-foreground/80">{i}</span>
-                ))}
+                {s.items.slice(0, 5).map((item) => {
+                  const Icon = iconMap[item.icon];
+                  return (
+                    <span key={item.name} className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded bg-muted text-foreground/80">
+                      {Icon && <Icon className="h-3 w-3 text-primary shrink-0" />}
+                      {item.name}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -89,22 +169,66 @@ const Index = () => {
       {/* Featured projects */}
       <section className="container pb-24">
         <div className="flex items-end justify-between mb-8">
-          <h2 className="text-3xl font-bold">Featured <span className="text-gradient">Projects</span></h2>
-          <Link to="/projects" className="text-sm text-primary hover:underline">All projects →</Link>
+          <div>
+            <h2 className="text-3xl font-bold">Featured <span className="text-gradient">Projects</span></h2>
+            <p className="mt-2 text-sm text-muted-foreground">Selected games I've built and shipped.</p>
+          </div>
+          <Link to="/projects" className="text-sm text-primary hover:underline shrink-0">View all projects →</Link>
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {projects.map((p) => (
-            <a key={p.title} href={p.link} target="_blank" rel="noreferrer"
-              className="group glass rounded-xl p-6 hover:border-primary/60 hover:shadow-glow transition-all">
-              <p className="font-mono text-[11px] text-primary">{p.platform}</p>
-              <h3 className="mt-2 text-xl font-bold group-hover:text-gradient">{p.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{p.description}</p>
-            </a>
+            <Link key={p.title} to={`/projects/${p.slug}`}
+              className="group glass rounded-xl overflow-hidden hover:border-primary/60 hover:shadow-glow transition-all">
+              <div className="aspect-video bg-muted/30 flex items-center justify-center overflow-hidden">
+                {p.image ? (
+                  <img src={p.image} alt={p.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                ) : (
+                  <div className="flex flex-col items-center gap-1.5 text-muted-foreground/40">
+                    <ImageIcon className="h-8 w-8" />
+                    <span className="text-[10px] font-mono">no screenshot</span>
+                  </div>
+                )}
+              </div>
+              <div className="p-6">
+                <p className="font-mono text-[11px] text-primary">{p.platform}</p>
+                <h3 className="mt-2 text-xl font-bold group-hover:text-gradient">{p.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{p.description}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
     </Layout>
   );
 };
+
+// Skill bar with progress indicator
+const barColors: Record<string, string> = {
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  accent: "bg-accent",
+};
+
+const SkillBar = ({ icon: Icon, label, level, color }: { icon: React.ComponentType<{ className?: string }>; label: string; level: number; color: "primary" | "secondary" | "accent" }) => (
+  <div className="flex items-center gap-3">
+    <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+    <span className="text-sm w-24 shrink-0">{label}</span>
+    <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
+      <div
+        className={`h-full rounded-full ${barColors[color]} transition-all duration-1000`}
+        style={{ width: `${level}%` }}
+      />
+    </div>
+    <span className="text-[10px] text-muted-foreground w-8 text-right font-mono">{level}%</span>
+  </div>
+);
+
+// Platform badge
+const PlatformBadge = ({ icon: Icon, label }: { icon: React.ComponentType<{ className?: string }>; label: string }) => (
+  <div className="flex items-center gap-2 text-xs px-3 py-2 rounded-lg bg-muted/50 text-foreground/70">
+    <Icon className="h-3.5 w-3.5 text-primary" />
+    {label}
+  </div>
+);
 
 export default Index;

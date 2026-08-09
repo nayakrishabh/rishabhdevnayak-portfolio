@@ -59,66 +59,194 @@ export const experience = [
   },
 ];
 
-export const projects = [
+export interface ProjectPlatform {
+  name: string;
+  url: string;
+}
+
+export interface Project {
+  title: string;
+  slug: string;
+  platform: string;
+  studio: string;
+  link: string;
+  image: string;
+  role: string;
+  year: string;
+  engine: string;
+  status: string;
+  description: string;
+  highlights: string[];
+  platforms: ProjectPlatform[];
+  tags: string[];
+}
+
+export const projects: Project[] = [
   {
     title: "Spacious Places",
+    slug: "spacious-places",
     platform: "Unity • VR (Meta Quest)",
     studio: "Carina Softlabs Inc.",
     link: "https://meta.com/experiences/spacious-places/8410008925778451",
+    image: "/SpaciousPlaces.png",
+    role: "Junior Unity Developer",
+    year: "2025",
+    engine: "Unity",
+    status: "Live",
     description:
       "Built four gameplay modules: a custom Meta Guardian system for the VR headset, an in-level pause menu, an IAP locking system for demo vs. full-game access, and a menu refinement plus data-reset module that preserves IAP purchase flags.",
+    highlights: [
+      "Built a custom Meta Guardian system for VR headset boundary management and player safety.",
+      "Developed an in-level pause menu with save, settings, and quit functionality.",
+      "Implemented an IAP locking system to gate demo vs. full-game content access.",
+      "Created a menu refinement and data-reset module that preserves IAP purchase flags across sessions.",
+    ],
+    platforms: [
+      { name: "Meta Quest", url: "https://meta.com/experiences/spacious-places/8410008925778451" },
+    ],
     tags: ["Unity", "VR", "C#", "Meta Quest", "IAP"],
   },
   {
     title: "Gods Gang",
+    slug: "gods-gang",
     platform: "Unity • Mobile",
     studio: "Carina Softlabs Inc.",
     link: "https://play.google.com/store/apps/details?id=com.techymaugames.godsgang&hl=en_IN",
+    image: "/GodsGang_Playstore.png",
+    role: "Junior Unity Developer",
+    year: "2025",
+    engine: "Unity",
+    status: "Live",
     description:
       "Developed complete playable character systems including movement, animations, combat abilities, collectible items, and Scriptable Object-based level data. Built modular special ability systems and an ambient audio system with distance-based attenuation and interior-exterior audio blending.",
+    highlights: [
+      "Developed complete playable character systems: movement, animations, combat abilities, and collectible items.",
+      "Built modular special ability systems using Scriptable Objects for data-driven level configuration.",
+      "Implemented an ambient audio system with distance-based attenuation and interior-exterior audio blending.",
+      "Designed and integrated Scriptable Object-based level data for flexible content authoring.",
+    ],
+    platforms: [
+      { name: "Google Play", url: "https://play.google.com/store/apps/details?id=com.techymaugames.godsgang&hl=en_IN" },
+    ],
     tags: ["Unity", "Mobile", "C#", "Play Store", "Gameplay"],
   },
   {
     title: "Shogun Heist",
+    slug: "shogun-heist",
     platform: "Roblox",
     studio: "Carina Softlabs Inc.",
     link: "https://roblox.com/games/111093934039629/Shogun-Heist",
+    image: "/ShogunHeist.png",
+    role: "Junior Unity Developer",
+    year: "2025",
+    engine: "Roblox Studio",
+    status: "Live",
     description:
       "Engineered a dynamic character-swapping challenge feature; diagnosed and resolved runtime crashes by programmatically generating and applying Humanoid Descriptions to custom Roblox character models for stable session flow.",
+    highlights: [
+      "Engineered a dynamic character-swapping challenge feature for varied gameplay scenarios.",
+      "Diagnosed and resolved runtime crashes related to custom Roblox character models.",
+      "Programmatically generated and applied Humanoid Descriptions for stable session flow.",
+      "Ensured multiplayer stability across character-switching edge cases.",
+    ],
+    platforms: [
+      { name: "Roblox", url: "https://roblox.com/games/111093934039629/Shogun-Heist" },
+    ],
     tags: ["Roblox", "Lua", "Multiplayer"],
   },
   {
     title: "Red Bamboo",
+    slug: "red-bamboo",
     platform: "Roblox",
     studio: "Carina Softlabs Inc.",
     link: "https://www.roblox.com/games/100270088910600/Red-Bamboo",
+    image: "",
+    role: "Junior Unity Developer",
+    year: "2025",
+    engine: "Roblox Studio",
+    status: "Live",
     description:
       "Developed the game's initial loading flow and startup sequence. Implemented a custom inventory system with item management and UI integration. Refined tool interactions and created a custom spawning logic for in-game tools. Built a complete UI system covering all game screens and HUD elements. Designed and implemented enemy behavior logic and AI systems.",
+    highlights: [
+      "Developed the game's initial loading flow and startup sequence for smooth player onboarding.",
+      "Implemented a custom inventory system with item management and full UI integration.",
+      "Created custom spawning logic and refined tool interactions for in-game items.",
+      "Built a complete UI system covering all game screens and HUD elements.",
+      "Designed and implemented enemy behavior logic and AI systems.",
+    ],
+    platforms: [
+      { name: "Roblox", url: "https://www.roblox.com/games/100270088910600/Red-Bamboo" },
+    ],
     tags: ["Roblox", "Lua", "Multiplayer"],
+  },
+  {
+    title: "Fantasy Mall 2",
+    slug: "fantasy-mall-2",
+    platform: "Unity • PC",
+    studio: "MBSGames",
+    link: "https://rahulmartin.itch.io/fantasymall2",
+    image: "/FantasyMall2_Image.gif",
+    role: "Software Engineer Intern",
+    year: "2024",
+    engine: "Unity",
+    status: "Live",
+    description:
+      "Worked on core gameplay systems including Game Optimization, interaction mechanics, Save System, Android compatibility, and economy balancing.",
+    highlights: [
+      "Worked on core gameplay systems: interaction mechanics, Save System, and economy balancing.",
+      "Performed Game Optimization and ensured Android compatibility for smooth mobile performance.",
+      "Built modular systems for inventory management and level progression.",
+    ],
+    platforms: [
+      { name: "itch.io", url: "https://rahulmartin.itch.io/fantasymall2" },
+    ],
+    tags: ["Unity", "C#", "PC", "Gameplay", "UI"],
   },
 ];
 
 export const skills = [
   {
     category: "Game Engines",
-    items: ["Unity", "Roblox Studio", "Unreal Engine (Blueprints)"],
+    items: [
+      { name: "Unity", icon: "box" },
+      { name: "Roblox Studio", icon: "blocks" },
+      { name: "Unreal Engine (Blueprints)", icon: "component" },
+    ],
   },
   {
     category: "Programming",
-    items: ["C#", "C++", "Lua", "Gameplay Programming", "Object-Oriented Design"],
+    items: [
+      { name: "C#", icon: "hash" },
+      { name: "C++", icon: "code2" },
+      { name: "Lua", icon: "file-code2" },
+      { name: "Gameplay Programming", icon: "gamepad2" },
+      { name: "Object-Oriented Design", icon: "boxes" },
+    ],
   },
   {
     category: "Game Development",
     items: [
-      "Mobile Games", "VR / AR / MR", "Multiplayer", "UI Systems",
-      "Animation Systems", "Game Mechanics Design", "Rigidbody Physics",
-      "Collision Systems", "Frame Rate Optimization", "Memory Optimization",
-      "Player Interaction",
+      { name: "Mobile Games", icon: "smartphone" },
+      { name: "VR / AR / MR", icon: "headset" },
+      { name: "Multiplayer", icon: "users" },
+      { name: "UI Systems", icon: "monitor" },
+      { name: "Animation Systems", icon: "film" },
+      { name: "Game Mechanics Design", icon: "cog" },
+      { name: "Rigidbody Physics", icon: "atom" },
+      { name: "Collision Systems", icon: "zap" },
+      { name: "Frame Rate Optimization", icon: "gauge" },
+      { name: "Memory Optimization", icon: "database" },
+      { name: "Player Interaction", icon: "mouse-pointer2" },
     ],
   },
   {
     category: "Tools & Workflow",
-    items: ["Git", "Version Control", "Profiling & Optimization", "Debugging"],
+    items: [
+      { name: "Git", icon: "git-branch" },
+      { name: "Version Control", icon: "git-compare" },
+      { name: "Profiling & Optimization", icon: "trending-up" },
+      { name: "Debugging", icon: "bug" },
+    ],
   },
 ];
 

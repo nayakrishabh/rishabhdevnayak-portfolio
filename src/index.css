@@ -50,10 +50,14 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground font-body antialiased;
+    cursor: none;
     background-image:
       linear-gradient(hsl(168 100% 52% / 0.04) 1px, transparent 1px),
       linear-gradient(90deg, hsl(168 100% 52% / 0.04) 1px, transparent 1px);
     background-size: 48px 48px;
+  }
+  a, button, [role="button"], input, select, textarea, [tabindex]:not([tabindex="-1"]) {
+    cursor: none;
   }
   h1,h2,h3,h4 { @apply font-display tracking-tight; }
   ::selection { background: hsl(var(--primary) / 0.4); }
