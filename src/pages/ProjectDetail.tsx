@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { Reveal } from "@/components/Reveal";
 import { projects } from "@/data/portfolio";
 import { ArrowLeft, ExternalLink, ImageIcon } from "lucide-react";
 
@@ -33,12 +34,12 @@ const ProjectDetail = () => {
         </Link>
 
         {/* Hero image */}
-        <div className="aspect-video w-full rounded-2xl overflow-hidden bg-muted/30 mb-10 border border-border">
+        <Reveal className="aspect-video w-full rounded-2xl overflow-hidden bg-muted/30 mb-10 border border-border">
           {project.image ? (
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-fade-in"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-3 text-muted-foreground/40">
@@ -46,10 +47,10 @@ const ProjectDetail = () => {
               <span className="text-sm font-mono">no screenshot</span>
             </div>
           )}
-        </div>
+        </Reveal>
 
         {/* Title + meta */}
-        <div className="mb-10">
+        <div className="mb-10 animate-fade-up">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-3">
             {project.platform}
           </p>
@@ -62,17 +63,17 @@ const ProjectDetail = () => {
           {/* Main content */}
           <div className="lg:col-span-2 space-y-10">
             {/* About */}
-            <section>
+            <Reveal as="section" delay={100}>
               <h2 className="text-2xl font-bold mb-4">About the project</h2>
               <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-            </section>
+            </Reveal>
 
             {/* Key Highlights */}
-            <section>
+            <section className="animate-fade-up" style={{ animationDelay: "200ms" }}>
               <h3 className="text-lg font-semibold mb-4">Key Highlights</h3>
               <ul className="space-y-3">
                 {project.highlights.map((h, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                  <li key={i} className="flex gap-3 text-sm text-muted-foreground animate-fade-up" style={{ animationDelay: `${250 + i * 90}ms` }}>
                     <span className="text-primary mt-0.5 shrink-0">▹</span>
                     {h}
                   </li>
@@ -82,16 +83,24 @@ const ProjectDetail = () => {
           </div>
 
           {/* Sidebar — Project Details */}
-          <aside className="lg:col-span-1">
+          <aside className="lg:col-span-1 animate-fade-up" style={{ animationDelay: "300ms" }}>
             <div className="glass rounded-2xl p-7 space-y-6 sticky top-24">
               <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
                 PROJECT DETAILS
               </h3>
 
-              <DetailRow label="Role" value={project.role} />
-              <DetailRow label="Year" value={project.year} />
-              <DetailRow label="Engine" value={project.engine} />
-              <DetailRow label="Status" value={project.status} />
+              <div className="animate-fade-up" style={{ animationDelay: "400ms" }}>
+                <DetailRow label="Role" value={project.role} />
+              </div>
+              <div className="animate-fade-up" style={{ animationDelay: "460ms" }}>
+                <DetailRow label="Year" value={project.year} />
+              </div>
+              <div className="animate-fade-up" style={{ animationDelay: "520ms" }}>
+                <DetailRow label="Engine" value={project.engine} />
+              </div>
+              <div className="animate-fade-up" style={{ animationDelay: "580ms" }}>
+                <DetailRow label="Status" value={project.status} />
+              </div>
 
               {/* Platforms */}
               <div>
@@ -132,7 +141,8 @@ const ProjectDetail = () => {
                 href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+                className="animate-fade-up flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 glow transition-opacity"
+                style={{ animationDelay: "650ms" }}
               >
                 <ExternalLink className="h-4 w-4" />
                 View Project

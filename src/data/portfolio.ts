@@ -250,6 +250,47 @@ export const skills = [
   },
 ];
 
+/**
+ * Skills page sidecar metadata — additive, doesn't change the `skills` shape.
+ *
+ * rarity: "legendary" | "epic" | "rare" (visual size + glow)
+ * level:  0–100 (gauge fill / tooltip)
+ * note:   short context shown in the hover tooltip
+ */
+export type SkillRarity = "legendary" | "epic" | "rare";
+
+export const skillMeta: Record<string, { rarity: SkillRarity; level: number; note: string }> = {
+  "Unity":                     { rarity: "legendary", level: 90, note: "Daily driver — shipped 5 titles" },
+  "Roblox Studio":             { rarity: "epic",      level: 80, note: "Fantasy Mall 2, live ops" },
+  "Unreal Engine (Blueprints)": { rarity: "rare",     level: 55, note: "Certified 2023, prototype work" },
+  "C#":                        { rarity: "legendary", level: 92, note: "Core language, 3+ yrs" },
+  "C++":                       { rarity: "epic",      level: 70, note: "SDL2 engine experiments" },
+  "Lua":                       { rarity: "epic",      level: 78, note: "Roblox gameplay scripting" },
+  "Gameplay Programming":      { rarity: "legendary", level: 90, note: "Systems, state machines, combat" },
+  "Object-Oriented Design":    { rarity: "epic",      level: 82, note: "Clean, modular gameplay code" },
+  "Mobile Games":              { rarity: "epic",      level: 85, note: "Play Store + App Store ships" },
+  "VR / AR / MR":              { rarity: "epic",      level: 72, note: "Meta Quest + WebXR builds" },
+  "Multiplayer":               { rarity: "epic",      level: 75, note: "Netcode & session systems" },
+  "UI Systems":                { rarity: "epic",      level: 80, note: "Menus, HUDs, inventory" },
+  "Animation Systems":         { rarity: "epic",      level: 74, note: "Animator trees, blend states" },
+  "Game Mechanics Design":     { rarity: "legendary", level: 88, note: "Core loops, economy design" },
+  "Rigidbody Physics":         { rarity: "epic",      level: 76, note: "Physics-driven gameplay" },
+  "Collision Systems":         { rarity: "epic",      level: 78, note: "Detection, triggers, layers" },
+  "Frame Rate Optimization":   { rarity: "epic",      level: 82, note: "60fps on low-end mobile" },
+  "Memory Optimization":       { rarity: "rare",      level: 70, note: "Pooling, asset streaming" },
+  "Player Interaction":        { rarity: "epic",      level: 80, note: "Input, feedback, feel" },
+  "Git":                       { rarity: "epic",      level: 84, note: "Team workflows, branching" },
+  "Version Control":           { rarity: "epic",      level: 82, note: "Clean history, PR reviews" },
+  "Profiling & Optimization":  { rarity: "epic",      level: 80, note: "Unity Profiler, frame debugging" },
+  "Debugging":                 { rarity: "epic",      level: 86, note: "Root-cause, not band-aids" },
+};
+
+export const DEFAULT_SKILL_META: { rarity: SkillRarity; level: number; note: string } = {
+  rarity: "rare",
+  level: 60,
+  note: "Working knowledge",
+};
+
 export const education = [
   {
     school: "Shri Shankaracharya Institute of Professional Management & Technology",

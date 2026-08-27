@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import { Reveal } from "@/components/Reveal";
 import { projects } from "@/data/portfolio";
 import { ExternalLink, ImageIcon } from "lucide-react";
 
@@ -8,14 +9,14 @@ const Projects = () => (
   <Layout>
     <PageHeader eyebrow="Press Start" title="Projects" subtitle="Selected shipped titles and gameplay modules." />
     <section className="container pb-16 grid md:grid-cols-2 gap-6">
-      {projects.map((p) => (
-        <Link
-          key={p.title}
-          to={`/projects/${p.slug}`}
-          className="group glass rounded-2xl overflow-hidden hover:border-primary/60 hover:shadow-glow transition-all"
-        >
-          {/* Project Image */}
-          <div className="aspect-video bg-muted/30 flex items-center justify-center overflow-hidden">
+      {projects.map((p, i) => (
+        <Reveal key={p.title} delay={(i % 2) * 120}>
+          <Link
+            to={`/projects/${p.slug}`}
+            className="group glass rounded-2xl overflow-hidden hover:border-primary/60 hover:shadow-glow transition-all block h-full"
+          >
+            {/* Project Image */}
+            <div className="shimmer aspect-video bg-muted/30 flex items-center justify-center overflow-hidden">
             {p.image ? (
               <img src={p.image} alt={p.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
             ) : (
@@ -39,7 +40,8 @@ const Projects = () => (
               ))}
             </div>
           </div>
-        </Link>
+          </Link>
+        </Reveal>
       ))}
     </section>
   </Layout>

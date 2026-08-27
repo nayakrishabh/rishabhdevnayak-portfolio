@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
-import { profile, education } from "@/data/portfolio";
+import { profile } from "@/data/portfolio";
 import { Download, Mail, Phone, MapPin, Linkedin } from "lucide-react";
 
 const Resume = () => (
@@ -31,19 +31,6 @@ const Resume = () => (
             <Download className="mr-2 h-4 w-4" /> Download PDF
           </a>
         </Button>
-
-        <div>
-          <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-3">Education</h3>
-          <div className="space-y-3">
-            {education.map((e) => (
-              <div key={e.school} className="text-sm">
-                <p className="font-semibold">{e.degree}</p>
-                <p className="text-muted-foreground text-xs">{e.school}</p>
-                <p className="text-muted-foreground text-xs">{e.period}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </aside>
 
       <div className="lg:col-span-2 glass rounded-2xl p-2 overflow-hidden">

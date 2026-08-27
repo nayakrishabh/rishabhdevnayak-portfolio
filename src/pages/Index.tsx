@@ -185,7 +185,7 @@ const Index = () => {
             <Reveal key={p.title} delay={(i % 3) * 120}>
               <Link to={`/projects/${p.slug}`}
                 className="group glass rounded-xl overflow-hidden hover:border-primary/60 hover:shadow-glow transition-all block h-full">
-              <div className="aspect-video bg-muted/30 flex items-center justify-center overflow-hidden">
+              <div className="shimmer aspect-video bg-muted/30 flex items-center justify-center overflow-hidden">
                 {p.image ? (
                   <img src={p.image} alt={p.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                 ) : (
