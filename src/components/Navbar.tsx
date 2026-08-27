@@ -44,14 +44,23 @@ const Navbar = () => {
                 to={l.to}
                 end={l.end}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  `group relative px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive
-                      ? "text-primary bg-primary/10"
+                      ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
                   }`
                 }
               >
-                {l.label}
+                {({ isActive }) => (
+                  <>
+                    {l.label}
+                    <span
+                      className={`absolute left-3 right-3 -bottom-0.5 h-px origin-left bg-gradient-primary transition-transform duration-300 ${
+                        isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </>
+                )}
               </NavLink>
             </li>
           ))}

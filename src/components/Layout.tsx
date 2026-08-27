@@ -1,8 +1,10 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const cursorRingRef = useRef<HTMLDivElement>(null);
@@ -134,7 +136,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       <Navbar />
-      <main className="flex-1 relative z-10">{children}</main>
+      <main className="flex-1 relative z-10">
+        {/* key by pathname so each route mounts with a fade-in transition */}
+        <div key={location.pathname} className="animate-fade-in">
+          {children}
+        </div>
+      </main>
       <Footer />
     </div>
   );
